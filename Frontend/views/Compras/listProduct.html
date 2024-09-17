@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.pinimg.com/originals/fd/b8/bc/fdb8bc1863d1f04429ff97056fa51666.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/Frontend/public/css/listTable.css">
+    <title>List SoftSolutions</title>
+</head>
+<body class="container" onload="listProducts()">
+    <h1 class="title">Lista de Productos</h1>
+    <div class="button-container">
+        <button class="button" type="button" onclick="window.location.href='/Frontend/views/dashboard.html';">Regresar</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Identification</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="content">
+            <!-- Table content will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <script src="/Frontend/public/js/functionsProduct.js"></script>
+</body>
+</html>

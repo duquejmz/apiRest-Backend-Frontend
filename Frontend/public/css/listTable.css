@@ -1,0 +1,95 @@
+/* General Styles */
+body {
+    font-family: 'Lucida Sans';
+    background-color: #6d6565;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    padding: 20px;
+}
+
+/* Title Styles */
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #050505;
+    padding: 50px;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #433e44;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Add rounded corners to the table */
+    overflow: hidden; /* Ensure border-radius works with shadow */
+}
+
+.table thead {
+    background-color: #e0bdf0;
+    color: #030303;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left; /* Default alignment for table data */
+    /* border: 1px solid #000; /* Black border for cells */
+    color: #0a0a0a;
+}
+
+.table th {
+    text-align: left; /* Center the headers */
+    border-bottom: 2px solid #f7f4f4; /* Thicker bottom border for headers */
+    font-family: 'Lucida Sans', /* Use a more rounded font for headers */
+    /* font-style: italic; /* Italicize the headers */
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #fcf9f9; /* Black border for row separation */
+}
+
+.table tbody tr:hover {
+    background-color: #897992;
+}
+
+/* Table Actions Column */
+.table .actions {
+    text-align: center;
+}
+
+.table .actions button {
+    background-color: hsl(0, 0%, 1%);
+    color: #080808;
+    border: none;
+    padding: 6px 12px;
+    margin: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.table .actions button:hover {
+    background-color: #080808;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.button {
+    background-color: hsl(281, 35%, 74%);
+    color: #080808;
+    border: none;
+    padding: 10px px;
+    margin: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lucida Sans';
+}

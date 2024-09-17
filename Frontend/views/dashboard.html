@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SoftSolutions</title>
+    <link rel="stylesheet" href="/Frontend/public/css/dashboard.css"> <!-- Asegúrate de tener este archivo CSS -->
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="/Frontend/views/login.html">SoftSolutions</a>
+        </div>
+        <div class="user-menu">
+            <span class="user-name">Bienvenido</span>
+            <div class="dropdown">
+                <button class="dropbtn">Login</button>
+                <div class="dropdown-content">
+                    <a href="#" id="logout">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Body - Dashboard grid -->
+    <div class="dashboard-grid">
+        <div class="card" id="productsCard">
+            <h3>Productos</h3>
+        </div>
+        <div class="card" id="providersCard">
+            <h3>Proveedores</h3>
+        </div>
+        <div class="card" id="categoriesCard">
+            <h3>Categorías</h3>
+        </div>
+        <div class="card" id="agendasCard">
+            <h3>Agendas</h3>
+        </div>
+    </div>
+
+    <script src="/Frontend/public/js/dashboard.js"></script> <!-- Vincula tu archivo JS -->
+</body>
+</html>
