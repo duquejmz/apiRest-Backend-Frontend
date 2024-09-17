@@ -2,13 +2,14 @@ import Product from "../models/Compras/products.js";
 import Category from "../models/Servicios/category.js"
 
 export async function getProduct (req, res) {
-  const products = await Product.find();
+  const products = await Product.find().populate('category');
   res.json(products);
+  
 };
 
 export async function getProductId (req, res) {
     try {
-        const product = await Product.findById(req.params.id);
+        const product = await Product.findById(req.params.id).populate('category');
         if (!product) {
             return res.status(404).json({ msg: 'Producto no encontrado' })
         }
@@ -26,7 +27,7 @@ export async function postProduct (req, res) {
       // Imprime los datos que recibes para verificar que req.body tenga la información correcta
       console.log("Datos recibidos:", { name, description, price, stock, category });
       
-      const categoryExists = await Category.findOne({ name: category });
+      const categoryExists = await Category.findOne({ _id: category });
       if (!categoryExists) {
         return res.status(400).json({ msg: 'Category not found' })};
 

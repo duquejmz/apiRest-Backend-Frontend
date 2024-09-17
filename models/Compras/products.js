@@ -22,8 +22,8 @@ const productSchema = new Schema({
         required: [true, 'the stock is required']
     },
     category: {
-        type: String,
-        required: [true, 'the category is required']
+        ref: 'Category',
+        type: Schema.Types.ObjectId,
     }
 },
 {
