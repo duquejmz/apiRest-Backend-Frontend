@@ -25,6 +25,15 @@ function Products() {
     navigate("/");
   };
 
+  const deleteProductHandler = async (product) => {
+    const res = await axios.delete(
+      `http://localhost:3000/api/products/${product._id}`
+    );
+    if (res.status === 200) {
+      getProducts();
+    }
+  };
+
   return (
     <div>
       <h1 className="title">Lista de Productos</h1>
@@ -64,6 +73,12 @@ function Products() {
                   Edit
                 </a> */}
                     <Link to={`/createProduct/${product._id}`}>Edit</Link>
+                    <button
+                      type="button"
+                      onClick={() => deleteProductHandler(product)}
+                    >
+                      Eliminar
+                    </button>
                   </td>
                 </tr>
               ))
