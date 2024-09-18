@@ -41,10 +41,12 @@ body {
 .dropdown {
     position: relative;
     display: inline-block;
+    
 }
 
 .dropbtn {
     background-color: #5c5a5a;
+    text-decoration: none;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -52,6 +54,18 @@ body {
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+}
+
+.dropbtn:hover {
+    background-color: #383434;
+}
+
+.user-access {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .dropdown-content {
@@ -149,3 +163,4 @@ body {
 .card button:active {
     background-color: hsl(0, 0%, 10%);
 }
+
