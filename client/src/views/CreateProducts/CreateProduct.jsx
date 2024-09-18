@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import Option from "../../components/Option";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 function CreateProduct() {
   const { register, handleSubmit, setValue } = useForm();
   const [categories, setCategories] = useState([]);
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState(null);
   const params = useParams();
+  const navigate = useNavigate();
 
   const getCategories = async () => {
     const res = await axios.get("http://localhost:3000/api/category");
@@ -22,42 +23,62 @@ function CreateProduct() {
   };
 
   useEffect(() => {
-    getProduct(params.id)
-  }, [])
+    if (params.id) {
+      getProduct(params.id);
+    }
+  }, [params.id]);
 
   useEffect(() => {
     getCategories();
-    loadProducts();
   }, []);
 
-  async function loadProducts() {
-    if (params.id) {
-      setValue("name", product.name);
-      setValue("description", product.description)
-      setValue("price", product.price);
-      setValue("stock", product.stock);
+  useEffect(() => {
+    if (product) {
+      loadProducts();
     }
+  }, [product]);
+
+  async function loadProducts() {
+    setValue("name", product.name);
+    setValue("description", product.description);
+    setValue("price", product.price);
+    setValue("stock", product.stock);
+    setValue("category", product.category);
   }
 
   const createProduct = (product) => {
     axios.post("http://localhost:3000/api/products", product);
-  }
+  };
 
   const onSubmit = handleSubmit(async (data) => {
     if (params.id) {
-
-      await axios.put(`http://localhost:3000/api/products/${params.id}`, data);
+      try {
+        await axios.put(
+          `http://localhost:3000/api/products/${params.id}`,
+          data
+        );
+        navigate("/products");
+      } catch (error) {
+        console.error(error);
+      }
     } else {
-      createProduct(data);
+      try {
+        createProduct(data);
+        navigate("/products");
+      } catch (error) {
+        console.error(error);
+      }
     }
   });
 
   return (
     <div className="container">
-      <h1 className="title">Editar Producto</h1>
+      <h1 className="title">
+        {params.id ? "Editar Producto" : "Crear Producto"}
+      </h1>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
-          <label>Name:</label>
+          <label>Nombre:</label>
           <input
             {...register("name")}
             type="text"
@@ -66,7 +87,7 @@ function CreateProduct() {
           />
         </div>
         <div className="form-group">
-          <label>Description:</label>
+          <label>Descripción:</label>
           <input
             {...register("description")}
             type="text"
@@ -75,7 +96,7 @@ function CreateProduct() {
           />
         </div>
         <div className="form-group">
-          <label>Price:</label>
+          <label>Precio:</label>
           <input
             {...register("price")}
             type="text"
@@ -84,7 +105,7 @@ function CreateProduct() {
           />
         </div>
         <div className="form-group">
-          <label>Stock:</label>
+          <label>Existencias:</label>
           <input
             {...register("stock")}
             type="text"
@@ -93,16 +114,24 @@ function CreateProduct() {
           />
         </div>
         <div className="form-group">
-          <label>Category:</label>
-          <select id="categorySelect" className="form-control-1">
-            <option value="">Select a Category</option>
+          <label>Categoría:</label>
+          <select
+            {...register("category")}
+            id="categorySelect"
+            className="form-control-1"
+          >
+            <option value="">Selecciona una categoría</option>
             {categories.map((category) => (
-              <Option value={category._id} label={category.name} />
+              <Option
+                key={category._id}
+                value={category._id}
+                label={category.name}
+              />
             ))}
           </select>
         </div>
-        <button type="button" className="btn">
-          Update
+        <button type="submit" className="btn">
+          {params.id ? "Actualizar" : "Crear"}
         </button>
       </form>
     </div>
