@@ -61,16 +61,15 @@ export async function postProduct(req, res) {
 }
 
 export async function putProduct(req, res) {
-  const { stock } = req.body;
-
   try {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      return res.status(404).json({ message: "Product not found" });
-    }
-    product.stock = stock;
-    await product.save();
-    res.status(200).json({ message: "Updated Stock", newStock: product.stock });
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res.status(200).json(product);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
