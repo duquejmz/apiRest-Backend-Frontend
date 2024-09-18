@@ -39,10 +39,23 @@ function CreateProduct() {
     }
   }
 
+  const createProduct = (product) => {
+    axios.post("http://localhost:3000/api/products", product);
+  }
+
+  const onSubmit = handleSubmit(async (data) => {
+    if (params.id) {
+
+      await axios.put(`http://localhost:3000/api/products/${params.id}`, data);
+    } else {
+      createProduct(data);
+    }
+  });
+
   return (
     <div className="container">
       <h1 className="title">Editar Producto</h1>
-      <form className="form">
+      <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <label>Name:</label>
           <input
