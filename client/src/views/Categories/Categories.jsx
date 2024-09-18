@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -35,9 +36,10 @@ function Categories() {
               <td>{category.name}</td>
               <td>{category.description}</td>
               <td>
-                <a href="editCategory.html?id=${Category._id}&name=${Category.name}">
+                {/* <a href="editCategory.html?id=${Category._id}&name=${Category.name}">
                   Edit
-                </a>
+                </a> */}
+                <Link to={`/createCategories/${category._id}`}>Edit</Link>
               </td>
             </tr>
           ))}

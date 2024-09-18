@@ -4,6 +4,7 @@ import Dashboard from "./views/Dashboard";
 import Products from "./views/Products";
 import Categories from "./views/Categories/Categories";
 import CreateProduct from "./views/CreateProducts/createProduct";
+import CreateCategories from "./views/CreateCategories/CreateCategories";
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
             <Route path="/categories" element={<Categories />} />
             <Route path="/createProduct" element={<CreateProduct />} />
             <Route path="/createProduct/:id" element={<CreateProduct />} />
+            <Route path="/createCategories" element={<CreateCategories />} />
+            <Route path="/createCategories/:id" element={<CreateCategories />} />
 
           </Routes>
         </main>

@@ -45,17 +45,15 @@ export async function postCategory (req, res) {
   }
 };
 
-export async function puCategory(req, res) {
-  const { stock } = req.body;
-
+export async function putCategory(req, res) {
   try {
-      const product = await Product.findById(req.params.id);
-      if (!product) {
-          return res.status(404).json({ message: 'Product not found' });
-      }
-      product.stock = stock;
-      await product.save();
-      res.status(200).json({ message: 'Updated Stock', newStock: product.stock });
+    const category = await Category.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+    {
+        new: true,
+    });
+      res.status(200).json(category);
   } catch (error) {
       res.status(400).json({ message: error.message });
   }
