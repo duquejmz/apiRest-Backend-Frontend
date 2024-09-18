@@ -1,3 +1,4 @@
+import category from "../models/Servicios/category.js";
 import Category from "../models/Servicios/category.js";
 
 export async function getCategory (req, res) {
@@ -56,5 +57,19 @@ export async function putCategory(req, res) {
       res.status(200).json(category);
   } catch (error) {
       res.status(400).json({ message: error.message });
+  }
+}
+
+export async function deleteCategory(req, res) {
+  try {
+    const categories = await Category.findById(req.params.id);
+
+    if (!categories) {
+      return res.status(404).json({ error: "Category not found" });
+    }
+    await category.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: "The category has been deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 }

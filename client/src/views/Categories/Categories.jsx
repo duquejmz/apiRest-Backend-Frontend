@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   const getCategories = async () => {
     const res = await axios.get("http://localhost:3000/api/category");
@@ -15,36 +16,62 @@ function Categories() {
     getCategories();
   }, []);
 
-  console.log(categories);
+  const goHome = () => {
+    navigate("/");
+  };
+
+  const deleteCategoryHandler = async (category) => {
+    const res = await axios.delete(
+      `http://localhost:3000/api/category/${category._id}`
+    );
+    if (res.status === 200) {
+      getCategories();
+    }
+  };
 
   return (
     <div>
-      <h1 className="title">List of Categories</h1>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Identification</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="content">
-          {categories.map((category) => (
+      <h1 className="title">Lista de Categorias</h1>
+      <div className="button-container">
+        <button className="button" type="button" onClick={goHome}>
+          Regresar
+        </button>
+        <Link className="button" to="/createCategory">
+          Crear categoria
+        </Link>
+      </div>
+      {categories && categories.length === 0 ? (
+        <p>No hay categorias</p>
+      ) : (
+        <table className="table">
+          <thead>
             <tr>
-              <td>{category._id}</td>
-              <td>{category.name}</td>
-              <td>{category.description}</td>
-              <td>
-                {/* <a href="editCategory.html?id=${Category._id}&name=${Category.name}">
-                  Edit
-                </a> */}
-                <Link to={`/createCategories/${category._id}`}>Edit</Link>
-              </td>
+              <th>Identification</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody id="content">
+            {categories.map((category) => (
+              <tr>
+                <td>{category._id}</td>
+                <td>{category.name}</td>
+                <td>{category.description}</td>
+                <td>
+                  <Link to={`/createCategories/${category._id}`}>Edit</Link>
+                  <button
+                      type="button"
+                      onClick={() => deleteCategoryHandler(category)}
+                    >
+                      Eliminar
+                    </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
