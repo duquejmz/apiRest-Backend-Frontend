@@ -35,7 +35,9 @@ function Dashboard() {
           </Link>
         </div>
         <div className="card" id="providersCard">
-          <h3>Proveedores</h3>
+        <Link to="/suppliers">
+            <h3>Proveedores</h3>
+          </Link>
         </div>
         <div className="card" id="categoriesCard">
           <Link to="/categories">

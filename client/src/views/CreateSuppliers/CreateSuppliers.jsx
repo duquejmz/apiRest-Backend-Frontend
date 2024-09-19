@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
-import Option from "../../components/Option";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import category from "../../../../models/Servicios/category";
-import { set } from "mongoose";
+
 
 function CreateSuppliers() {
   const { register, handleSubmit, setValue } = useForm();
@@ -42,13 +40,17 @@ function CreateSuppliers() {
   
   async function loadSuppliers() {
     setValue("name", supplier.name);
-    setValue("email", supplier.description);
+    setValue("email", supplier.email);
     setValue("phone", supplier.phone);
     setValue("address", supplier.address);
   }
 
-  const createSupplier = (supplier) => {
-    axios.post("http://localhost:3000/api/suppliers", supplier);
+  const createSupplier = async (supplier) => {
+    try {
+      await axios.post("http://localhost:3000/api/suppliers", supplier);
+    } catch (error) {
+      console.error( 'Error al crear al proveedor', error );
+    }
   };
 
   const onSubmit = handleSubmit(async (data) => {
@@ -64,7 +66,7 @@ function CreateSuppliers() {
       }
     } else {
       try {
-        createCategory(data);
+        createSupplier(data);
         navigate("/suppliers");
       } catch (error) {
         console.error(error);
@@ -75,7 +77,7 @@ function CreateSuppliers() {
   return (
     <div className="container">
       <h1 className="title">
-        {params.id ? "Editar Categoria" : "Crear Categoria"}
+        {params.id ? "Editar Proveedor" : "Crear Proveedor"}
       </h1>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
@@ -88,11 +90,29 @@ function CreateSuppliers() {
           />
         </div>
         <div className="form-group">
-          <label>Descripción:</label>
+          <label>Email:</label>
           <input
-            {...register("description")}
+            {...register("email")}
             type="text"
-            id="description"
+            id="email"
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label>Telefono:</label>
+          <input
+            {...register("phone")}
+            type="text"
+            id="phone"
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label>Direccion:</label>
+          <input
+            {...register("address")}
+            type="text"
+            id="address"
             className="form-control"
           />
         </div>
