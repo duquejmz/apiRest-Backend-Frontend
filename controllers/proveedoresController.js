@@ -5,6 +5,19 @@ export async function getSupplier (req, res) {
   res.json(suppliers);
 };
 
+export async function getSupplierId(req, res) {
+  try {
+    const supplier = await Proveedor.findById(req.params.id)
+    if (!supplier) {
+      return res.status(404).json({ msg: "Proveedor no encontrado" });
+    }
+    res.status(200).json(supplier);
+  } catch (error) {
+    console.error("Error al obtener el proveedor", error);
+    res.status(500).json({ msg: "Error del Servidor" });
+  }
+}
+
 export async function postSupplier (req, res) {
   try {
       const { name, email, phone, address } = req.body;

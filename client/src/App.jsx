@@ -9,6 +9,8 @@ import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import CreateSuppliers from "./views/CreateSuppliers/CreateSuppliers";
 import Suppliers from "./views/Suppliers";
+import CreateCalendar from "./views/CreateCalendar/CreateCalendar";
+import Calendars from "./views/Agenda";
 
 function App() {
   return (
@@ -22,10 +24,14 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/suppliers" element={<Suppliers />} />
+            <Route path="/calendars" element={<Calendars />} />
             <Route path="/createProduct" element={<CreateProduct />} />
             <Route path="/createProduct/:id" element={<CreateProduct />} />
-            <Route path="/createCategories" element={<CreateCategories />} />
-            <Route path="/createSuppliers" element={<CreateSuppliers />} />
+            <Route path="/createCategory" element={<CreateCategories />} />
+            <Route path="/createSupplier/:id" element={<CreateSuppliers />} />
+            <Route path="/createSupplier" element={<CreateSuppliers />} />
+            <Route path="/createCalendar/:id" element={<CreateCalendar />} />
+            <Route path="/createCalendar" element={<CreateCalendar />} />
             <Route
               path="/createCategories/:id"
               element={<CreateCategories />}

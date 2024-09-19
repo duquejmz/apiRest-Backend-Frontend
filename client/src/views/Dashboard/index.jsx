@@ -16,7 +16,7 @@ function Dashboard() {
                 Login
               </Link>
               <div className="dropdown-content">
-                <Link to="/register" id="logout">
+                <Link to="/login" id="logout">
                   Cerrar sesión
                 </Link>
               </div>
@@ -45,7 +45,9 @@ function Dashboard() {
           </Link>
         </div>
         <div className="card" id="agendasCard">
-          <h3>Agendas</h3>
+        <Link to="/calendars">
+            <h3>Agendas</h3>
+          </Link>
         </div>
       </div>
     </div>
