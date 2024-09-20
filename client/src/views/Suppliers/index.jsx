@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 function Suppliers() {
   const [suppliers, setSuppliers] = useState([]);
@@ -32,10 +34,10 @@ function Suppliers() {
     <div>
       <h1 className="title">Lista de Proveedores</h1>
       <div className="button-container">
-        <button className="button" type="button" onClick={goHome}>
+        <button className="special-button" type="button" onClick={goHome}>
           Regresar
         </button>
-        <Link className="button" to="/createSupplier">
+        <Link className="special-button" to="/createSupplier">
           Crear proveedor
         </Link>
       </div>
@@ -63,12 +65,17 @@ function Suppliers() {
                   <td>{supplier.phone}</td>
                   <td>{supplier.address}</td>
                   <td>
-                    <Link to={`/createSupplier/${supplier._id}`}>Editar</Link>
+                    <Link to={`/createSupplier/${supplier._id}`} className="icon-button">
+                    <button>
+                    <FontAwesomeIcon icon={faEdit} /> Editar
+                    </button>
+                    </Link>
                     <button
                       type="button"
                       onClick={() => deleteSupplierHandler(supplier)}
+                      className="delete-button"
                     >
-                      Eliminar
+                    <FontAwesomeIcon icon={faTrash} /> Eliminar
                     </button>
                   </td>
                 </tr>

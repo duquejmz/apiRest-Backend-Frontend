@@ -1,6 +1,9 @@
 import axios from "axios";
+import './styles.css'
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -38,10 +41,10 @@ function Products() {
     <div>
       <h1 className="title">Lista de Productos</h1>
       <div className="button-container">
-        <button className="button" type="button" onClick={goHome}>
+        <button className="special-button" type="button" onClick={goHome}>
           Regresar
         </button>
-        <Link className="button" to="/createProduct">
+        <Link className="special-button" to="/createProduct">
           Crear producto
         </Link>
       </div>
@@ -51,12 +54,12 @@ function Products() {
         <table className="table">
           <thead>
             <tr>
-              <th>Identification</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Stock</th>
-              <th>Category</th>
-              <th>Actions</th>
+              <th>Identificacion</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Existencias</th>
+              <th>Categoria</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="content">
@@ -69,15 +72,17 @@ function Products() {
                   <td>{product.stock}</td>
                   <td>{product.category && product.category.name}</td>
                   <td>
-                    {/* <a href="editProduct.html?id=${Product._id}&name=${Product.name}">
-                  Edit
-                </a> */}
-                    <Link to={`/createProduct/${product._id}`}>Edit</Link>
+                    <Link to={`/createProduct/${product._id}`} className="icon-button">
+                      <button>
+                        <FontAwesomeIcon icon={faEdit} /> Editar
+                      </button>
+                    </Link>
                     <button
                       type="button"
                       onClick={() => deleteProductHandler(product)}
+                      className="delete-button"
                     >
-                      Eliminar
+                      <FontAwesomeIcon icon={faTrash} /> Eliminar
                     </button>
                   </td>
                 </tr>

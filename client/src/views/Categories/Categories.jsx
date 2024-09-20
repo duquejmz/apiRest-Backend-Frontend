@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -33,10 +35,10 @@ function Categories() {
     <div>
       <h1 className="title">Lista de Categorias</h1>
       <div className="button-container">
-        <button className="button" type="button" onClick={goHome}>
+        <button className="special-button" type="button" onClick={goHome}>
           Regresar
         </button>
-        <Link className="button" to="/createCategory">
+        <Link className="special-button" to="/createCategory">
           Crear categoria
         </Link>
       </div>
@@ -59,12 +61,17 @@ function Categories() {
                 <td>{category.name}</td>
                 <td>{category.description}</td>
                 <td>
-                  <Link to={`/createCategories/${category._id}`}>Edit</Link>
+                  <Link to={`/createCategories/${category._id}`} className="icon-button">
+                  <button>
+                  <FontAwesomeIcon icon={faEdit} /> Editar
+                  </button>
+                  </Link>
                   <button
                       type="button"
                       onClick={() => deleteCategoryHandler(category)}
+                      className="delete-button"
                     >
-                      Eliminar
+                    <FontAwesomeIcon icon={faTrash} /> Eliminar
                     </button>
                 </td>
               </tr>

@@ -8,11 +8,11 @@ body {
 
 .container {
     padding: 20px;
-    background-color: #d8cfdb; /* Background color for the form container */
-    border-radius: 8px; /* Add rounded corners to the container */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for a lifted effect */
-    max-width: 600px; /* Max width of the form */
-    margin: 20px auto; /* Center the container */
+    background-color: #d8cfdb;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
 }
 
 /* Title Styles */
@@ -40,14 +40,15 @@ body {
     color: #050505;
 }
 
+/* Input Fields */
 .form-control {
     width: 100%;
-    max-width: 96%; /* Ensure input does not exceed container width */
+    max-width: 96%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    background-color: #dac3d1; /* Background color for input fields */
+    background-color: #dac3d1;
 }
 
 .form-control:focus {
@@ -55,16 +56,44 @@ body {
     outline: none;
 }
 
+/* Select Styles */
+.form-control-1 {
+    width: 100%;
+    max-width: 96%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #dac3d1;
+    color: #050505;
+    appearance: none; /* Elimina el estilo predeterminado del navegador para el select */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14l-4.796-5.481C2.104 5.135 2.413 4.5 3 4.5h10c.587 0 .896.636.549 1.16l-4.796 5.481a1 1 0 0 1-1.506 0z"/></svg>'); 
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%; /* Asegura que el ícono se muestre a la derecha */
+    background-size: 12px;
+}
+
+.form-control-1:focus {
+    border-color: #88708b;
+    outline: none;
+}
+
+.form-control-1 option {
+    background-color: #dfc5db;
+    color: #050505;
+}
+
+/* Button Styles */
 .btn {
     background-color: #905fa3;
-    color: #fff;
+    color: #e2c9db;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    align-self: center; /* Center the button horizontally */
+    align-self: center;
 }
 
 .btn:hover {

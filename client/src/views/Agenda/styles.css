@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: 'Lucida Sans';
     background-color: #6d6565;
@@ -93,3 +92,43 @@ body {
     font-size: 16px;
     font-family: 'Lucida Sans';
 }
+
+/* Estilos para enlaces de "Crear producto" y "Editar" */
+.button, .table a {
+    text-decoration: none; /* Eliminar subrayado */
+    background-color: hsl(281, 35%, 74%); /* Color de fondo */
+    color: #080808; /* Color de texto */
+    border: none;
+    padding: 0;
+    margin: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lucida Sans';
+    display: inline-block; /* Permite que los enlaces se comporten como botones */
+}
+
+/* Estilos para los íconos en los botones */
+.table a i, .table button i {
+    font-size: 18px; /* Tamaño del icono */
+    color: #433e44; /* Color del icono */
+    margin-right: 8px; /* Separación del texto (si hubiera) */
+}
+
+.table a:hover i, .table button:hover i {
+    color: #000; /* Cambia el color al pasar el cursor */
+}
+
+/* Estilos específicos para el botón de eliminar */
+.delete-button {
+    background: none; /* Elimina el fondo del botón */
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: red; /* Cambia el color al pasar el cursor por el botón de eliminar */
+}
+
+
+

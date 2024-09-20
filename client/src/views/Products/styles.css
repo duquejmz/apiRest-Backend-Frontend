@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: 'Lucida Sans';
     background-color: #6d6565;
@@ -86,10 +85,77 @@ body {
     background-color: hsl(281, 35%, 74%);
     color: #080808;
     border: none;
-    padding: 10px 12px;
-    margin: 8px;
+    padding: 20px 20px;
+    margin: 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     font-family: 'Lucida Sans';
+    display: inline-block;
+    text-align: center;
 }
+
+/* Estilos para enlaces de "Crear producto" y "Editar" */
+.button, .table a {
+    text-decoration: none; /* Eliminar subrayado */
+    background-color: hsl(281, 35%, 74%); /* Color de fondo */
+    color: #080808; /* Color de texto */
+    border: 10px;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lucida Sans';
+    display: inline-block; /* Permite que los enlaces se comporten como botones */
+}
+
+/* Estilos para los íconos en los botones */
+.table a i, .table button i {
+    font-size: 18px; /* Tamaño del icono */
+    color: #433e44; /* Color del icono */
+    margin-right: 8px; /* Separación del texto (si hubiera) */
+}
+
+.table a:hover i, .table button:hover i {
+    color: #000; /* Cambia el color al pasar el cursor */
+}
+
+/* Estilos específicos para el botón de eliminar */
+.delete-button {
+    background: none; /* Elimina el fondo del botón */
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: red; /* Cambia el color al pasar el cursor por el botón de eliminar */
+}
+
+/* Estilos para los botones de Regresar y Crear producto */
+.special-button {
+    padding: 12px 25px; /* Ajusta el margen interno del botón */
+    margin: 10px; /* Mayor margen externo */
+    font-size: 16px; /* Tamaño de la fuente más grande */
+    background-color: hsl(281, 35%, 74%);
+    color: #080808;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    display: inline-block; /* Asegura que el botón ocupe el espacio adecuado */
+    text-align: center; /* Centrar el texto dentro del botón */
+    text-decoration: none; /* Elimina subrayado de enlaces */
+    box-sizing: border-box; /* Asegura que padding y borde se consideren dentro del tamaño total */
+    transition: background-color 0.3s ease;
+}
+
+.special-button:hover {
+    background-color: hsl(281, 35%, 60%); /* Cambia el color de fondo al pasar el mouse */
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Asegura que los botones estén alineados a la derecha */
+}
+
+

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 function Calendars() {
   const [calendars, setCalendars] = useState([]);
@@ -33,10 +35,10 @@ function Calendars() {
     <div>
       <h1 className="title">Lista de Agendas</h1>
       <div className="button-container">
-        <button className="button" type="button" onClick={goHome}>
+        <button className="special-button" type="button" onClick={goHome}>
           Regresar
         </button>
-        <Link className="button" to="/createCalendar">
+        <Link className="special-button" to="/createCalendar">
           Crear agenda
         </Link>
       </div>
@@ -61,12 +63,17 @@ function Calendars() {
                 <td>{calendar.description}</td>
                 <td>{calendar.startDay}</td>
                 <td>
-                  <Link to={`/createCalendar/${calendar._id}`}>Edit</Link>
+                  <Link to={`/createCalendar/${calendar._id}`} className="icon-button">
+                  <button>
+                  <FontAwesomeIcon icon={faEdit} /> Editar
+                  </button>
+                  </Link>
                   <button
                       type="button"
                       onClick={() => deleteCalendarHandler(calendar)}
+                      className="delete-button"
                     >
-                      Eliminar
+                    <FontAwesomeIcon icon={faTrash} /> Eliminar
                     </button>
                 </td>
               </tr>
